@@ -4,8 +4,32 @@
 neo4j status
 Neo4j is running at pid 24550
 
-npm start seedDb
 npm run dev
+npm run seedDb
+```
+
+In case of query failing
+```graphql schema
+query {
+  User {
+    name
+    avgStars
+  }
+}
+```
+Please install APOC library using Neo4jDesktop
+
+"APOC" Name history
+Apoc was the technician and driver on board of the Nebuchadnezzar in the Matrix movie. He was killed by Cypher.
+APOC was also the first bundled A Package Of Component for Neo4j in 2009.
+APOC also stands for "Awesome Procedures On Cypher"
+
+# To connect to mongo also use apoc
+[mongodb integration](https://neo4j.com/docs/labs/apoc/current/database-integration/mongodb/)
+[how-to-install-apoc-for-neo4j](https://stackoverflow.com/questions/42740355/how-to-install-apoc-for-neo4j)
+Test with
+```neo4j
+call apoc.help("apoc")
 ```
 
 Browser spins at: 
