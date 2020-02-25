@@ -1,3 +1,16 @@
+# TODO 
+
+```bash
+neo4j status
+Neo4j is running at pid 24550
+
+npm start seedDb
+npm run dev
+```
+
+Browser spins at: 
+[Neo4JBrowser](http://localhost:7474/browser/)
+
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/grand-stack/grand-stack-starter&env=NEO4J_USER&env=NEO4J_URI&env=NEO4J_PASSWORD)
 
 # GRANDstack Starter
