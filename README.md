@@ -17,12 +17,19 @@ query {
   }
 }
 ```
-Please install APOC library using Neo4jDesktop
 
 "APOC" Name history
-Apoc was the technician and driver on board of the Nebuchadnezzar in the Matrix movie. He was killed by Cypher.
-APOC was also the first bundled A Package Of Component for Neo4j in 2009.
-APOC also stands for "Awesome Procedures On Cypher"
+Apoc was killed killed by Cypher on board of the Nebuchadnezzar in Matrix.
+
+[installation](https://neo4j.com/docs/labs/apoc/current/introduction/#installation)
+[installation2](https://stackoverflow.com/questions/42740355/how-to-install-apoc-for-neo4j)
+
+conf file has to have
+```bash
+dbms.security.procedures.whitelist=apoc.*
+dbms.security.procedures.unrestricted=apoc.*
+
+```
 
 # To connect to mongo also use apoc
 [mongodb integration](https://neo4j.com/docs/labs/apoc/current/database-integration/mongodb/)
@@ -30,6 +37,15 @@ APOC also stands for "Awesome Procedures On Cypher"
 Test with
 ```neo4j
 call apoc.help("apoc")
+```
+
+```apoc
+WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/3.5/src/test/resources/person.json' AS url
+
+CALL apoc.load.json(url) YIELD value as person
+
+MERGE (p:Person {name:person.name})
+   ON CREATE SET p.age = person.age, p.children = size(person.children)
 ```
 
 Browser spins at: 
