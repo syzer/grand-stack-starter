@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 
 import {
   AppBar,
@@ -13,7 +13,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText
-} from "@material-ui/core";
+} from '@material-ui/core'
 
 import {
   Menu as MenuIcon,
@@ -21,39 +21,39 @@ import {
   Dashboard as DashboardIcon,
   EventNote as EventNoteIcon,
   People as PeopleIcon
-} from "@material-ui/icons";
+} from '@material-ui/icons'
 
-import UserList from "./UserList";
-import classNames from "classnames";
+import UserList from './UserList'
+import classNames from 'classnames'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const styles = theme => ({
   root: {
-    display: "flex"
+    display: 'flex'
   },
   toolbar: {
     paddingRight: 24
   },
   toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
     ...theme.mixins.toolbar
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    backgroundColor: "#383838"
+    backgroundColor: '#383838'
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
@@ -63,28 +63,28 @@ const styles = theme => ({
     marginRight: 36
   },
   menuButtonHidden: {
-    display: "none"
+    display: 'none'
   },
   title: {
     flexGrow: 1
   },
   drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: drawerWidth,
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
   },
   drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
     width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9)
     }
   },
@@ -92,40 +92,40 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    height: "100vh",
-    overflow: "auto"
+    height: '100vh',
+    overflow: 'auto'
   }
-});
+})
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      selectedView: "Home",
+      selectedView: 'Home',
       open: true
-    };
+    }
   }
 
   setSelectedView(viewName) {
     this.setState({
       selectedView: viewName
-    });
+    })
   }
 
   handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
+    this.setState({ open: true })
+  }
 
   handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
+    this.setState({ open: false })
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
 
     return (
       <React.Fragment>
-        <CssBaseline />
+        <CssBaseline/>
         <div className={classes.root}>
           <AppBar
             position="absolute"
@@ -147,7 +147,7 @@ class App extends Component {
                   this.state.open && classes.menuButtonHidden
                 )}
               >
-                <MenuIcon />
+                <MenuIcon/>
               </IconButton>
               <Typography
                 component="h1"
@@ -172,52 +172,52 @@ class App extends Component {
           >
             <div className={classes.toolbarIcon}>
               <IconButton onClick={this.handleDrawerClose}>
-                <ChevronLeftIcon />
+                <ChevronLeftIcon/>
               </IconButton>
             </div>
-            <Divider />
+            <Divider/>
             <List>
               <div>
-                <ListItem button onClick={() => this.setSelectedView("Home")}>
+                <ListItem button onClick={() => this.setSelectedView('Home')}>
                   <ListItemIcon>
-                    <DashboardIcon />
+                    <DashboardIcon/>
                   </ListItemIcon>
-                  <ListItemText primary="Home" />
+                  <ListItemText primary="Home"/>
                 </ListItem>
 
                 <ListItem
                   button
-                  onClick={() => this.setSelectedView("Businesses")}
+                  onClick={() => this.setSelectedView('Businesses')}
                 >
                   <ListItemIcon>
-                    <EventNoteIcon />
+                    <EventNoteIcon/>
                   </ListItemIcon>
-                  <ListItemText primary="Businesses" />
+                  <ListItemText primary="Businesses"/>
                 </ListItem>
 
-                <ListItem button onClick={() => this.setSelectedView("Users")}>
+                <ListItem button onClick={() => this.setSelectedView('Users')}>
                   <ListItemIcon>
-                    <PeopleIcon />
+                    <PeopleIcon/>
                   </ListItemIcon>
-                  <ListItemText primary="Users" />
+                  <ListItemText primary="Users"/>
                 </ListItem>
               </div>
             </List>
           </Drawer>
           <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
+            <div className={classes.appBarSpacer}/>
 
             {/* FIXME: Use proper routing here instead  */}
             <Typography component="div" className={classes.chartContainer}>
-              {this.state.selectedView === "Home" ? <UserList /> : null}
-              {this.state.selectedView === "Businesses" ? <div /> : null}
-              {this.state.selectedView === "Users" ? <UserList /> : null}
+              {this.state.selectedView === 'Home' ? <UserList/> : null}
+              {this.state.selectedView === 'Businesses' ? <div/> : null}
+              {this.state.selectedView === 'Users' ? <UserList/> : null}
             </Typography>
           </main>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(App)
