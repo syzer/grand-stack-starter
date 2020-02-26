@@ -1,7 +1,8 @@
 const test = require('ava')
 const fetch = require('isomorphic-fetch')
+const axios = require('axios')
 
-test('subscription', t =>
+test('Subscription', t =>
   fetch('http://localhost:4001/graphql', {
     'headers': {
       'accept': '*/*',
@@ -33,8 +34,34 @@ test('subscription', t =>
       t.fail(err)
     }))
 
-
-
+test('Subscription with Axios', t =>
+  axios.post('http://localhost:4001/graphql',
+    {
+      query: `
+        query {
+          usersBySubstring(substring: "Bo") {
+            name
+            reviews {
+              stars
+              id
+            }
+          }
+            User {
+              numReviews
+              name
+              id
+              _id
+            }
+          }`
+    })
+    .then(e => {
+      t.pass()
+    })
+    .catch(err => {
+      console.error(err)
+      t.fail(err)
+    })
+)
 
 
 
