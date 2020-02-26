@@ -48,6 +48,26 @@ MERGE (p:Person {name:person.name})
    ON CREATE SET p.age = person.age, p.children = size(person.children)
 ```
 
+# GraphQL to Neo4j
+```graphql
+query {
+    usersBySubstring(substring: "Bo") {
+      name
+      reviews {
+        stars
+        id
+      }
+    }
+}
+```
+Generates like this query
+```cypher
+WITH apoc.cypher.runFirstColumn("
+MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u", 
+{offset:0, first:-1, substring:"Bo"}, True) AS x UNWIND x AS `user` 
+RETURN `user` { .name , reviews: [(`user`)-[:`WROTE`]->(`user_reviews`:`Review`) | user_reviews { .stars , .id }] } AS `user`
+```
+
 Browser spins at: 
 [Neo4JBrowser](http://localhost:7474/browser/)
 
